@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-  int i,n,nt;
+  int n,nt;
   double a[N], b[N], sum=0.0;
   double ts, tf;
   
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
   omp_set_num_threads(nt);
 #endif
 
-  for (i=0;i<N;++i){
+  for (int i=0;i<N;++i){
     a[i] = 1;
     b[i] = -1;
   }
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 #endif
  
 #pragma omp parallel for shared(n,a,b) private(i) reduction(+:sum) 
-  for (i=0;i<N;++i){
+  for (int i=0;i<N;++i){
     sum += a[i]*b[i];
   }
 #ifdef PAPI
