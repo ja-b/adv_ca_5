@@ -9,7 +9,7 @@
 #include<papi.h>
 #endif
 
-#define N 10000000000
+#define N 1000000000
 
 int main(int argc, char **argv)
 {
