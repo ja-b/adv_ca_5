@@ -5,7 +5,7 @@ find_package(OpenMP)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 find_package(PAPI)
 
-set(CMAKE_C_FLAGS_RELEASE "-O2")
+set(CMAKE_C_FLAGS_RELEASE "-O2 -DOMP -DPAPI")
 
 add_executable(dotp_omp dotp_omp.c)
 
