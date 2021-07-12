@@ -1,0 +1,45 @@
+dot product:-1000000000.000000,  time(s)2.187235
+
+
+PAPI-HL Output:
+{
+  "cpu in mhz":"3100",
+  "threads":[
+    {
+      "id":"23343934068672",
+      "regions":[
+        {
+          "dotp":{
+            "region_count":"1",
+            "cycles":"6583147284",
+            "PAPI_FP_INS":"2000000002",
+            "PAPI_FP_OPS":"2000000002"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+{
+    "ranks": [
+        {
+            "threads": [
+                {
+                    "regions": [
+                        {
+                            "dotp": {
+                                "Region count": 1,
+                                "Real time in s": 2.12,
+                                "MFLIPS/s": 941.8,
+                                "MFLOPS/s": 941.8
+                            }
+                        }
+                    ],
+                    "id": "23343934068672"
+                }
+            ],
+            "id": "0000"
+        }
+    ]
+}
