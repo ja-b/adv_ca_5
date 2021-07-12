@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.11)
 project(advanced_ca_2 C CXX)
+find_package(PAPI)
+find_package(OpenMP)
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
-
-find_package(PAPI)
-find_package(OpenMP)
 
 add_executable(dotp_omp dotp_omp.c)
 
