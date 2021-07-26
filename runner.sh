@@ -6,5 +6,5 @@
 #SBATCH --ntasks=1
 #SBATCH --exclusive
 
-./dotp_omp 1
+./array_sum 1
 papi_hl_output_writer.py

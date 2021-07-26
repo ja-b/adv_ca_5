@@ -3,8 +3,8 @@
 #SBATCH --time=02:00
 #SBATCH --output=run_output.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
 #SBATCH --exclusive
+#SBATCH --partition=broadwl-lc
 
-./dotp_omp 1
+getconf PAGESIZE
+./array_sum 10000000
