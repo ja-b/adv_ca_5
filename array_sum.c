@@ -9,57 +9,33 @@
 #include<papi.h>
 #endif
 
-#define N 1000000000
+#define N 1000000
 
 int main(int argc, char **argv)
 {
-  long i;
-  double a[N], sum=0.0;
+  int x=0;
   double ts, tf;
   char* event_name;
 
-  
-#ifdef OMP
-  nt = atoi(argv[1]);
-  omp_set_num_threads(nt);
-#endif
-
-  for (i=0;i<N;++i){
-    a[i] = 1;
-  }
-
-#ifdef OMP
-  ts = omp_get_wtime();
-#endif
-
-#ifdef PAPI
   long_long *values;
-  int Events[] = {PAPI_TLB_DM};
+  int Events[] = {PAPI_BR_MSP, PAPI_BR_INS, PAPI_RES_STL};
   int num_events = sizeof(Events) / sizeof(int);
   PAPI_start_counters(Events, num_events);
   event_name = (char*)malloc(128);
 
   values = (long_long*)malloc(num_events*sizeof(long_long))
-#endif
- 
-  for (i=0;i<N;++i){
-    sum += a[i];
-  }
-#ifdef PAPI
-  PAPI_stop_counters(values, num_events);
-#endif
-#ifdef OMP
-  tf = omp_get_wtime();
-#endif
 
-#ifdef PAPI
+  for (int i=0;i<N;++i){
+    x += 1;
+  }
+  PAPI_stop_counters(values, num_events);
+
   for(i=0; i < num_events; i++) {
     PAPI_event_code_to_name(Events[i], event_name);
     printf("%s:%lld\n", event_name, values[i]);
   }
-#endif
 
- printf("array sum:%f\n", sum);
+ printf("array sum:%i\n", x);
 
 }
 
