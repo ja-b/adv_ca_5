@@ -9,11 +9,11 @@
 #include<papi.h>
 #endif
 
-#define N 1000000
-
 int main(int argc, char **argv)
 {
   int x=0;
+  int i=0;
+  int N = atoi(argv[1]);
   double ts, tf;
   char* event_name;
 
@@ -23,9 +23,9 @@ int main(int argc, char **argv)
   PAPI_start_counters(Events, num_events);
   event_name = (char*)malloc(128);
 
-  values = (long_long*)malloc(num_events*sizeof(long_long))
+  values = (long_long*)malloc(num_events*sizeof(long_long));
 
-  for (int i=0;i<N;++i){
+  for (i=0;i<N;++i){
     x += 1;
   }
   PAPI_stop_counters(values, num_events);
